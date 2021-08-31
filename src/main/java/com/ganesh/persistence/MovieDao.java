@@ -12,12 +12,12 @@ import javax.transaction.Transactional;
 
 
 @Repository
-public interface MovieDao extends JpaRepository<Movie, Integer>{
+    public interface MovieDao extends JpaRepository<Movie, Integer>{
 
     @Transactional
     @Modifying
     @Query("UPDATE Movie SET name =:name WHERE id =:id")
     int updateMovieName(@Param("id") int id,@Param("name") String name);
 
-
+    Movie getMovieByName(String name);
 }
